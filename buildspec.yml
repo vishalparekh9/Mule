@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Mule build-deployment phase initiated...
+      - mvn test
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn package
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn deploy -DmuleDeploy -Dcloud.env=Sandbox -Danypoint.businessGroup=<UsefulBI Corporation> -Dcloudhub.workerType=Small -DcloudhubAppName=Mule-demo -Dmule.version=4.4.0 -Dcloud.user=<vishalparekh> -Dcloud.password=<B@ntud0o90>
